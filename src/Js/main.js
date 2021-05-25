@@ -1,4 +1,4 @@
-import { Ingredient,Epicerie, Panier, Personne,Bol } from "./classes.js";
+import { Ingredient,Epicerie, Panier, Personne,Bol, Poele } from "./classes.js";
 import {maison } from "./objets.js";
 
 
@@ -104,17 +104,35 @@ bol.contenu.forEach(ingredient => {
 personne.seDeplacer(epicerie);
 epicerie.ajouterPanier(personne.mainDroite);
 // >>1. Afficher un petit message
+console.log(epicerie.paniers);
 // >>1. Retourner à la maison pour continuer l'omelette
-
 // >>1. Afficher un petit message
 personne.seDeplacer(maison);
-// >>1. Vérifier chaque ingrédient dans le bol et le couper seulement s'il est entier ! Pour ça on utilise la méthode couper de personnage
+// >>1. Vérifier chaque ingrédient dans le bol et le couper seulement s'il est entier !
+//  Pour ça on utilise la méthode couper de personnage
+bol.contenu.forEach(ingredient => {
+    personne.couper(ingredient);
+})
+// >>1. Mélanger le contenu du bol avec la méthode melanger.
+//  on va nommer ce mélange une 'omelette' (à passer en param).
+let omelette = bol.melanger();
 
-// >>1. Mélanger le contenu du bol avec la méthode melanger. on va nommer ce mélange une 'omelette' (à passer en param).
+
 // >>1. Afficher un message avec le nouveau mélange
-// >>1. vider le contenu du bol dans la poele. Il ne doit plus rien avoir dans le bol et y avoir juste l'omelette pas cuite.
-// >>1. Afficher un message final, notre omelette est cuite :)
+console.log(`Mélange Omelette : ${omelette}`);
 
+// >>1. vider le contenu du bol dans la poele. Il ne doit plus rien avoir dans le bol et 
+// y avoir juste l'omelette pas cuite.
+let poele = new Poele();
+setTimeout(()=>{
+    poele.cuire(bol.contenu);
+    // >>1. Afficher un message final, notre omelette est cuite :)
+    console.log(`Notre omelette est cuite !`);
+},4000);
+
+
+
+ 
 
 
 

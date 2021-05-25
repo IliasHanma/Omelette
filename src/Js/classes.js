@@ -54,8 +54,8 @@ export class Personne {
         });
     }
     couper(ingredient){
-         if(ingredient == "entier"){
-             
+         if(ingredient.etat == "entier"){
+          ingredient.etat = "coupé";
          }
     }
     prendreMainDroite(panier){
@@ -80,8 +80,25 @@ export class Bol{
     constructor(){
         this.contenu = [];
     }
-    melanger(){};
+    melanger(){
+        let omelette = "";
+        this.contenu.forEach(ingredient =>{
+            omelette += ingredient.nom;
+        })
+        return omelette;
+    };
 }
+
+export class Poele{
+    constructor(){
+        this.contenu = [];
+    }
+    cuire(contenuBol){
+       this.contenu = contenuBol;
+       contenuBol =[];
+    };
+}
+
 
 
 
